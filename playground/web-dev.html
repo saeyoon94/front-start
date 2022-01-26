@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        //다른것들 사용 없이 html, css, 자바스립트만 가지고 프론트를 개발하던 시절.
+        //id가 app인 곳의 정보를 받아옴
+        var div = document.querySelector('#app');
+        //console.log(div);
+        var str = 'hello world'
+        div.innerHTML = str; //div 태그에 넣어줌
+
+        str = 'hello world!!!'  //str의 값을 바꾸는 것 만으로는 화면에 반영되지 않음
+        div.innerHTML = str  //또 다시 바뀐 문자열의 정보를 대입해줘야 화면에 표시된다. - 이게 전통적인 javascript 개발 방식
+    </script>
+</body>
+</html>
+
+
