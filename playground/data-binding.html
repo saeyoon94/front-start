@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id='app'>
+<!--    id의 값과 class의 값을 속성값에 바인딩하겠다. 'v-' 속성이 붙는 순간 data나 computed속성을 뒤지게 될 것.-->
+    <p v-bind:id="uuid" v-bind:class="name">{{num}}</p>
+    <p>{{doubleNum}}</p>
+<!--    v-if는 false일 시 dom을 제게-->
+    <div v-if="loading">
+        Loading....
+    </div>
+    <div v-else>
+        test user has been logged in
+    </div>
+<!--    v-show는 false일 시 css로 display: none 적용-->
+    <div v-show="loading">
+        Loading...
+    </div>
+<!--    message의 값은 입력될 때마다 v-model에 들어감... 그래서 vue의 data에 저장되고, 아래 p태그에 실시간으로 반영된다-->
+    <input type="text" v-model="message">
+    <p>{{message}}</p>
+
+</div>
+<script src = "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            num: 10,
+            uuid: 'abcd1234',
+            name: 'text-blue',
+            loading: true,
+            message: ''
+        },
+        //데이터를 계산해서 적용되는 속성
+        computed: {
+            doubleNum: function () {
+                return this.num * 2;
+            },
+        }
+    })
+</script>
+
+</body>
+</html>

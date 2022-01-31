@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <div>
+<!--        a 태그로 링크가 나타나게 된다-->
+        <router-link to="/login">Login</router-link>
+        <router-link to="/main">Main</router-link>
+    </div>
+<!--    view 인스턴스에서 라우터 인스턴스를 연결해야 사용할 수 있음. 여기에 라우팅된 컴포넌트가 들어가게 된다.-->
+    <router-view></router-view>
+</div>
+
+<!--먼저 vue를 등록하고 vue router를 등록한다-->
+<script src = "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src = "https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    var LoginConponent = {
+        template: '<div>login</div>'
+    }
+    var MainComponent = {
+        template: '<div>main</div>'
+    }
+
+    var router = new VueRouter({
+        //페이지의 라우팅 정보(어떤 url에 어떤 페이지를 라우팅할지
+        //url의 해시값 제거
+        mode: 'history',
+        routes: [
+            {
+                //page의 url
+                path: '/login',
+                //해당 url에서 표시될 컴포넌트, 페이지당 컴포넌트는 하나라서 s는 붙지 않음.
+                component: LoginConponent
+            },
+            {
+                path: '/main',
+                component: MainComponent
+            }
+        ]
+    });
+    new Vue({
+        el: "#app",
+        router: router
+    });
+
+    // 자바스크립트의 비동기 처리 패턴
+    // 1. callback
+    // 2. promise
+    // 3. promise + generator
+    // 4. async & await
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--    v-on:click="실행할 메서드 이름"-->
+    <button v-on:click="logText">Click me</button>
+<!--    키를 눌렀다가 올라올 때 실핼, keyup이벤트에 이벤트 모디파이어인 .찍고 뒤에 다른것둘 븉아면 앤터 눌렀을 때와 같은 상황에서만 반응하게 할 수 있음-->
+    <input type="text" v-on:keyup.enter="logText">
+
+</div>
+<script src = "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        methods: {
+            logText: function () {
+                console.log('clicked');
+            },
+        }
+    })
+</script>
+</body>
+</html>
