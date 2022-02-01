@@ -1,0 +1,25 @@
+#vue cli
+vue create "경로"
+vue create vue-cli
+cd vue-cli
+npm run serve
+-> 8080포트로 서버 실행, npm은 node package manager, 이 명령어는 package.json의 script의 serve의 내용을 치는것과 동일
+기본적으로 모든 것은 웹펙을 기반으로 구성되어 있음.(웹펙 공부 추천)
+일단 이걸 실행하면 기본적으로 public/index.html이 실행된다. 여기에 div id="app"의 아래에 우리가 src에 작성한 코드들이 주입되어 들어가게 된다.
+
+src/main.js를 보면 앞에서 계속 하던
+new Vue({
+    el: '#app'
+})
+과 동일한 역할을 하는 코드가 있다.(.$mount('#app') 이 정확히 같은 역할을 한다)
+render의 경우 템플릿이라는 속성을 정의하였을 때 내부적으로 실행되게 된다. 여기서는 싱글 파일 컴포넌트인 App.vue를 임포트해온 것을 렌더하는 역할
+이전에 components 속성 안에 컴포넌트를 추가한 것과 동일한 내용임.
+
+싱글파일 컴포넌트 : .vue파일로 html, css, javascript를 한 파일에서 관리
+그래서 기존 방식대로 컴포넌트에 template속성에 넣던 내용은 <template>태크에 넣어 주면 된다.
+methods속성에 넣던 내용은 <script>태크 안에 export default에 넣어주면 된다.
+
+컴포넌트 이름은 자바 클래스처럼 하고, 2단어 이상으로 조합되도록 한다. 이유는 이걸 App.vue의 템플릿에 적용할 때, 한 단어라면
+이것이 html 표준 태그인지 vue component인지 브라우저가 구분할 수 없기 때문이다.
+
+

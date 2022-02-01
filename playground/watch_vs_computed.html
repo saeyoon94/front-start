@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    {{ num }}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            num: 10
+        },
+        //단순한 값에 대한 계산, 벨리데이션 라이브러리에서도 이것을 기반으로 구현
+        computed: {
+            doubleNum: function() {
+                return this.num * 2;
+            }
+        },
+        //무거운 로직(매번 실행되는게 부담스러운.. 데이터를 불러오는 로직 같은 것)
+        //대부분 computed로 해결이 되는 경우가 많기에 computed를 주로 사용하자. 코드도 깔끔하고 캐싱등의 장점이 있음.
+        watch: {
+            num: function(newValue, oldValue) {
+                this.fetchUserByNumber(newValue);
+            }
+        },
+        methods: {
+            fetchUserByNumber: function(num) {
+                // console.log(num);
+                axios.get(num);
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .warning {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+<!--    class에 cname속성을 넣어 매핑시킬 수도 있지만 boolean값을 통해 warning클래스를 적용시킬지 말지 결정할 수 있음. 위의 css속성을 먹일지 말지 결정-->
+<!--    <p v-bind:class="{ warning: isError}">Hello</p>-->
+<!--    근데 이런 로직이 템플릿쪽에 있지 않고 아래에 스크립트단에 있는게 가독성에 좋기 때문에 computed속성 이용-->
+    <p v-bind:class="errorTextColor">Hello</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            // cname: 'blue-text',
+            isError: false
+        },
+        computed: {
+            errorTextColor: function() {
+                // if (isError) {
+                //   return 'warning'
+                // } else {
+                //   return null;
+                // }
+                return this.isError ? 'warning' : null;
+            }
+        }
+    });
+</script>
+</body>
+</html>

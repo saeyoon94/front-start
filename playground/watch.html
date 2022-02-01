@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{ num }}
+    <button v-on:click="addNum">Increase</button>
+</div>
+<script src = "https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            num: 10
+        },
+        //기존 데이터가 변화할 때 실행. data속성의 값에 매핑
+        watch: {
+            num: function () {
+                this.logText();
+            }
+        },
+        methods: {
+            addNum: function () {
+                this.num += 1;
+            },
+            logText: function () {
+                console.log('changed');
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
